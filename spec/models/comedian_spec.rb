@@ -12,6 +12,14 @@ RSpec.describe Comedian do
 
   describe 'Relationships' do
     it 'should have specials' do
+      Comedian.create(name: 'Comedian', age: 30)
+      Special.create(name: 'Special 1', comedian_id: 1)
+      Special.create(name: 'Special 2', comedian_id: 1)
+      specials = Comedian.first.specials
+
+      expect(specials.length).to eq 2
+      expect(specials.first.id).to eq 1
+      expect(specials.first.name).to eq 'Special 1'
     end
   end
 
